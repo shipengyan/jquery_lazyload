@@ -1,0 +1,7 @@
+.container img {
+  margin-bottom: 10px;
+}
+#container {
+  height: 600px;
+  overflow: scroll;
+}

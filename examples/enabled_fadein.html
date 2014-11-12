@@ -3,31 +3,15 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta charset="utf-8">
-  <title>Lazy Load Enabled With CSS Background Images</title>
+  <title>Lazy Load Enabled With FadeIn Effect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link type="text/css" media="screen" href="http://www.appelsiini.net/css/appelsiini.css" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="shortcut icon" href="http://www.appelsiini.net/img/favicon.ico">
+  <link type="text/css" media="screen" href="style/appelsiini.css" rel="stylesheet">
+  <link href="style/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style/custom.css"/>
+
   <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
+  <script src="js/html5shiv.js"></script>
   <![endif]-->
-  <script>
-//<![CDATA[
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-190966-1']);
-_gaq.push(['_trackPageview']);
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-//]]>
-  </script>
-  <style type="text/css">
-    .container img {
-      margin-bottom: 10px;
-    }
-  </style>
 </head>
 
 <body>
@@ -39,37 +23,41 @@ _gaq.push(['_trackPageview']);
         <a href="http://www.appelsiini.net/projects"><span class="label label-danger">Projects</span></a>
         <br>
         <div>
-          <iframe src="http://ghbtns.com/github-btn.html?user=tuupola&amp;repo=jquery_lazyload&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="94" height="30"></iframe>    
+          <iframe src="http://ghbtns.com/github-btn.html?user=tuupola&amp;repo=jquery_lazyload&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="94" height="30"></iframe>
           <iframe src="http://ghbtns.com/github-btn.html?user=tuupola&amp;repo=jquery_lazyload&amp;type=fork&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="30"></iframe>
         </div>
       </div>
     </div>
   </div>
-   
+
   <div class="container">
     <div class="col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
-      
-      <h2>Plugin enabled on css background images with fadein effect</h2>
+
+      <h2>Plugin enabled with fadein effect</h2>
       <p>
-        Here be dragons.
+        Images below the fold (the ones lower than window bottom) are not loaded. When scrolling down
+        they are loaded when needed. Images appear using <a href="http://docs.jquery.com/Effects/fadeIn">fadeIn</a>
+        effect. Empty cache and shift-reload to test again. Compare this to page where plugin is
+        <a href="enabled.html">without effects</a>.
       </p>
       <pre class="prettyprint">
-  &lt;div class="lazy" data-original="img/bmw_m1_hood.jpg" style="background-image: url('img/grey.gif'); width: 765px; height: 574px;"&gt;&lt;/div&gt;
-
-  $("div.lazy").lazyload({
-      effect : "fadeIn"
-  });
+$("img.lazy").lazyload({
+    effect : "fadeIn"
+});
       </pre>
-      <div class="lazy" data-original="img/bmw_m1_hood.jpg" style="width: 765px; height: 574px; background-image: url('img/grey.gif')"></div>
-      <div class="lazy" data-original="img/bmw_m1_side.jpg" style="width: 765px; height: 574px; background-image: url('img/grey.gif')"></div>
-      <div class="lazy" data-original="img/viper_1.jpg" style="width: 765px; height: 574px; background-image: url('img/grey.gif')"></div>
-      <div class="lazy" data-original="img/viper_corner.jpg" style="width: 765px; height: 574px; background-image: url('img/grey.gif')"></div>
-      <div class="lazy" data-original="img/bmw_m3_gt.jpg" style="width: 765px; height: 574px; background-image: url('img/grey.gif')"></div>
-      <div class="lazy" data-original="img/corvette_pitstop.jpg" style="width: 765px; height: 574px; background-image: url('img/grey.gif')"></div>
-      
+      <pre class="prettyprint">&lt;img class="lazy" data-original="img/example.jpg" width="765" height="574"&gt;</pre>
+      <div id="container">
+        <img class="lazy img-responsive" src="../img/grey.gif" data-original="img/bmw_m1_hood.jpg" width="765" height="574" alt="BMW M1 Hood"><br/>
+        <img class="lazy img-responsive" data-original="img/bmw_m1_side.jpg" width="765" height="574" alt="BMW M1 Side"><br/>
+        <img class="lazy img-responsive" data-original="img/viper_1.jpg" width="765" height="574" alt="Viper 1"><br/>
+        <img class="lazy img-responsive" data-original="img/viper_corner.jpg" width="765" height="574" alt="Viper Corner"><br/>
+        <img class="lazy img-responsive" data-original="img/bmw_m3_gt.jpg" width="765" height="574" alt="BMW M3 GT"><br/>
+        <img class="lazy img-responsive" data-original="img/corvette_pitstop.jpg" width="765" height="574" alt="Corvette Pitstop"><br/>
+      </div>
+
     </div>
   </div>
-  
+
   <div class="bottom-menu bottom-menu-large bottom-menu-inverse">
     <div class="container">
       <div class="col-md-offset-1 col-lg-offset-2">
@@ -110,13 +98,14 @@ _gaq.push(['_trackPageview']);
   </div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="jquery.lazyload.js?v=1.9.1"></script>
+  <script src="../jquery.lazyload.js?v=1.9.1"></script>
   <script src="http://www.appelsiini.net/js/demo.js"></script>
   <script type="text/javascript" charset="utf-8">
   $(function() {
-     $("div.lazy").lazyload({
-       effect : "fadeIn"
+     $("img.lazy").lazyload({
+         effect : "fadeIn"
      });
+
   });
   </script>
 </body>
